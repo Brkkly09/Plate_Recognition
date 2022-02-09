@@ -8,6 +8,8 @@ from picamera import PiCamera
 import smtplib
 server=smtplib.SMTP('smtp.gmail.com',587)
 server.starttls()
+
+# Enter Here your Email ID and Password
 server.login("Your Mail ID@gmail.com", "Enter Your Password")
 camera = PiCamera()
 camera.resolution = (640, 480)
@@ -48,6 +50,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
              Cropped = gray[topx:bottomx+1, topy:bottomy+1]
              text = pytesseract.image_to_string(Cropped, config='--psm 11')
              print("Detected Number is:",text)
+                
+                # Enter the e-mail address of the person you want to send the e-mail to here.
              server.sendmail("Sender's Email ID@gmail.com","Sender's Email ID@gmail.com",text)
              cv2.imshow("Frame", image)
              cv2.imshow('Cropped',Cropped)
