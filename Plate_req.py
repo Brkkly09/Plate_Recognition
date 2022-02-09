@@ -9,7 +9,7 @@ import smtplib
 server=smtplib.SMTP('smtp.gmail.com',587)
 server.starttls()
 
-# Enter Here your Email ID and Password
+# Enter here your Email ID and Password
 server.login("Your Mail ID@gmail.com", "Enter Your Password")
 camera = PiCamera()
 camera.resolution = (640, 480)
